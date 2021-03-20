@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import AirportInfo from '../AirportInfo/AirportInfo';
@@ -21,8 +21,10 @@ const AirportWeatherContainer = (props) => {
     });
 
     const dispatch = useDispatch();
-    const airportData = useSelector(state => state.airportList);
+    const airportData = useSelector(state => state.airportList.airports);
     console.log("AD", airportData);
+
+    const stableDispatch = useCallback(dispatch, [])
 
 
     //Currently only loads in the data once so that it won't have to load everytime a user clicks on another tab. 
@@ -48,32 +50,31 @@ const AirportWeatherContainer = (props) => {
         // });
         dispatch(getData(props.name))
 
-    }, [dispatch]); //***** ADDRESS THIS WARNING
+    }, [stableDispatch]); //***** ADDRESS THIS WARNING
 
     return (
         <div>
-            {data.airport && data.weather &&
+            {airportData  &&
                 <Container className="airport-container">
                     <Row>
                         <div>
-                            <h1>{data.airport.name}</h1>
+                            <h1>{airportData.name}</h1>
                             <div>
                                 <span className="bold-text">ICAO: </span>
-                                {data.airport.code}
+                                {airportData.code}
                             </div>
                         </div>
                     </Row>
-                    <Row>
+                    {/* <Row>
                         <Col md="7">
                             <AirportInfo data={data.airport} />
                         </Col>
                         <Col md="5">
                             <WeatherInfo data={data.weather} city={data.airport.city} />
                         </Col>
-                    </Row>
+                    </Row> */}
                 </Container>
             }
-            asdfsdf
         </div>
     );
         
