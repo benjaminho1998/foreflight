@@ -11,7 +11,7 @@ const TopBar = () => {
             <h1 className="header">Airports</h1>
             <div className="top-desc-container">
                 <IoMdAirplane /> 
-                Find airport and weather data 
+                Find airport and weather data
             </div>
         </div>
     );

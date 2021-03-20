@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AirportContainer from '../AirportContainer/AirportContainer';
+import AirportWeatherContainer from '../AirportWeatherContainer/AirportWeatherContainer';
 
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
@@ -14,16 +14,16 @@ const Body = () => {
         <div>
             <Tabs defaultActiveKey="kaus" id="uncontrolled-tab-example">
                 <Tab eventKey="kaus" title="Austin-Bergstrom International (KAUS)">
-                    <AirportContainer name="kaus" />
+                    <AirportWeatherContainer name="kaus" />
                 </Tab>
                 <Tab eventKey="50R" title="Lockhart Municipal (50R)">
-                    <AirportContainer name="50r" />
+                    <AirportWeatherContainer name="50r" />
                 </Tab>
                 <Tab eventKey="egll" title="Heathrow (EGLL)">
-                    <AirportContainer name="egll" />
+                    <AirportWeatherContainer name="egll" />
                 </Tab>
                 <Tab eventKey="khou" title="William P Hobby (KHOU)">
-                    <AirportContainer name="khou" />
+                    <AirportWeatherContainer name="khou" />
                 </Tab>
             </Tabs>
         </div>
