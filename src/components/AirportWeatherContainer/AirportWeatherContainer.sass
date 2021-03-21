@@ -1,5 +1,11 @@
+@import '../../sassStyles/_variables'
+@import '../../sassStyles/_mixins'
+
 .airport-container
-    margin-top: 15px
+    margin-top: $main-spacing
 
 .bold-text
-    font-weight: bold
+    @include bold-text
+
+.airport-name
+    margin-left: $main-spacing

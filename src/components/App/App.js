@@ -3,9 +3,6 @@ import React from 'react';
 import TopBar from '../TopBar/TopBar';
 import Body from '../Body/Body';
 
-
-import './App.sass';
-
 //App contains the entire app
 const App = () => {
 
