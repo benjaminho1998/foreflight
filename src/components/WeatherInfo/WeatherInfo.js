@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, shallowEqual } from 'react-redux';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -21,7 +21,7 @@ const WeatherInfo = () => {
             return state.weatherList.weather.report.conditions;
         }
         return state.weatherList.weather.report.forecast.conditions[0];
-    });
+    }, shallowEqual);
 
     //Gets appropriate data points to display.
     const tempF = convertToF(weatherInfo.tempC);

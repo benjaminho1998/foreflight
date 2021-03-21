@@ -15,8 +15,9 @@ import './AirportWeatherContainer.sass';
 const AirportWeatherContainer = (props) => {
 
     const dispatch = useDispatch();
-    const airportData = useSelector(state => state.airportList.airports);
-    const weatherData = useSelector(state => state.weatherList.weather.report);
+    const airportName = useSelector(state => state.airportList.airports.name);
+    const airportCode = useSelector(state => state.airportList.airports.code);
+    const weatherLoaded = useSelector(state => state.weatherList.weather.report);
 
     useEffect(() => {
         dispatch(getData(props.name));
@@ -24,14 +25,14 @@ const AirportWeatherContainer = (props) => {
 
     return (
         <div>
-            {airportData && weatherData &&
+            {airportName && weatherLoaded &&
                 <Container className="airport-container">
                     <Row>
                         <div className="airport-name">
-                            <h1>{airportData.name}</h1>
+                            <h1>{airportName}</h1>
                             <div>
                                 <span className="bold-text">ICAO: </span>
-                                {airportData.code}
+                                {airportCode}
                             </div>
                         </div>
                     </Row>

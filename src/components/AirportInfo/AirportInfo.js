@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, shallowEqual } from 'react-redux';
 
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
@@ -12,11 +12,10 @@ import './AirportInfo.sass';
 //AirportInfo contains the information on the Airport itself
 const AirportInfo = () => {
 
-    const airportInfo = useSelector(state => state.airportList.airports);
-    const imgName = airportInfo.code;
-    const latitude = airportInfo.latitude;
-    const longitude = airportInfo.longitude;
-    const runways = airportInfo.runways;
+    const imgName = useSelector(state => state.airportList.airports.code);
+    const latitude = useSelector(state => state.airportList.airports.latitude);
+    const longitude = useSelector(state => state.airportList.airports.longitude);
+    const runways = useSelector(state => state.airportList.airports.runways, shallowEqual);
 
     return (
         <div>
