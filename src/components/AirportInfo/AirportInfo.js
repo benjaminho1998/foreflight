@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useSelector, shallowEqual } from 'react-redux';
+
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -8,9 +10,12 @@ import Table from 'react-bootstrap/Table'
 import './AirportInfo.sass';
 
 //AirportInfo contains the information on the Airport itself
-const AirportInfo = (props) => {
+const AirportInfo = () => {
 
-    const imgName = props.data.code;
+    const imgName = useSelector(state => state.airportList.airports.code);
+    const latitude = useSelector(state => state.airportList.airports.latitude);
+    const longitude = useSelector(state => state.airportList.airports.longitude);
+    const runways = useSelector(state => state.airportList.airports.runways, shallowEqual);
 
     return (
         <div>
@@ -21,15 +26,20 @@ const AirportInfo = (props) => {
                         <ListGroup>
                             <ListGroup.Item>
                                 <span className="bold-text">Latitude: </span>
-                                {props.data.latitude}
+                                {latitude}
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <span className="bold-text">Longitude: </span>
-                                {props.data.longitude}
+                                {longitude}
                             </ListGroup.Item>
                         </ListGroup>
                     </Card.Body>
-                    <Card.Img variant="top" className="round-bottom" src={require(`../../images/${imgName}.jpg`)} />
+                    <Card.Img 
+                        alt="Google maps view of the airport" 
+                        variant="top" 
+                        className="round-bottom" 
+                        src={require(`../../images/${imgName}.jpg`)} 
+                    />
                 </Card>
             </Row>
             <Row className="row-container">
@@ -45,7 +55,7 @@ const AirportInfo = (props) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {props.data.runways.map((runway, index) => 
+                                {runways.map((runway, index) => 
                                     <tr key={index}>
                                         <td>{index + 1}</td>
                                         <td>{runway.name}</td>

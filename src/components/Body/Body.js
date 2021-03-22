@@ -1,31 +1,32 @@
 import React from 'react';
 
-import AirportContainer from '../AirportContainer/AirportContainer';
+import AirportWeatherContainer from '../AirportWeatherContainer/AirportWeatherContainer';
 
-import Tabs from 'react-bootstrap/Tabs';
-import Tab from 'react-bootstrap/Tab';
+import { NavTab } from "react-router-tabs";
+import { Switch, Route } from 'react-router-dom';
 
-import './Body.sass';
+import "../../../node_modules/react-router-tabs/styles/react-router-tabs.css";
 
+const airports = ["kaus", "50r", "egll", "khou"];
 
 //Body contains the tabs which in turn contains the AirportContainer
 const Body = () => {
     return (
         <div>
-            <Tabs defaultActiveKey="kaus" id="uncontrolled-tab-example">
-                <Tab eventKey="kaus" title="Austin-Bergstrom International (KAUS)">
-                    <AirportContainer name="kaus" />
-                </Tab>
-                <Tab eventKey="50R" title="Lockhart Municipal (50R)">
-                    <AirportContainer name="50r" />
-                </Tab>
-                <Tab eventKey="egll" title="Heathrow (EGLL)">
-                    <AirportContainer name="egll" />
-                </Tab>
-                <Tab eventKey="khou" title="William P Hobby (KHOU)">
-                    <AirportContainer name="khou" />
-                </Tab>
-            </Tabs>
+            <NavTab to="/kaus">Austin-Bergstrom International (KAUS)</NavTab>
+            <NavTab to="/50r">Lockhart Municipal (50R)</NavTab>
+            <NavTab to="/egll">Heathrow (EGLL)</NavTab>
+            <NavTab to="/khou">William P Hobby (KHOU)</NavTab>
+            <Switch>
+                {airports.map((airport, index) => 
+                    <Route key={index} path={"/"+ airport} render={() => 
+                        <AirportWeatherContainer name={airport} />}   
+                    />
+                )}
+                <Route path="/">
+                    <AirportWeatherContainer name="kaus" />
+                </Route>
+            </Switch>
         </div>
     );
 }

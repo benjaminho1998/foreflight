@@ -1,17 +1,15 @@
+@import '../../sassStyles/_mixins'
+
 .card.card-container
-    border-radius: 10px
-    border: none
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px
+    @include card-container
 
 .row.row-container
     margin: 20px 0
 
-img.card-img-top.roud-bottom
+img.card-img-top.round-bottom
     border-bottom-left-radius: 10px
     border-bottom-right-radius: 10px
 
-.card-title.h5
-    font-size: 48px
-
 .bold-text
-    font-weight: bold
+    @include bold-text
+    
