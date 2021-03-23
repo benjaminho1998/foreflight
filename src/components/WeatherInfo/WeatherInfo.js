@@ -16,6 +16,7 @@ const WeatherInfo = () => {
 
     const city = useSelector(state => state.airportList.airports.city);
 
+    //Lockhart doesn't have a current conditions array, so this conditionally returns the appropriate data for each airport
     const weatherInfo = useSelector(state => {
         if(state.weatherList.weather.report.conditions) {
             return state.weatherList.weather.report.conditions;
@@ -23,10 +24,10 @@ const WeatherInfo = () => {
         return state.weatherList.weather.report.forecast.conditions[0];
     }, shallowEqual);
 
-    //Gets appropriate data points to display.
+    //Converts the data
     const tempF = convertToF(weatherInfo.tempC);
     const windMph = convertToMph(weatherInfo.wind.speedKts);
-    const cloudCoverage = getGreatestCloudCoverage([...weatherInfo.cloudLayers, ...weatherInfo.cloudLayersV2]);
+    const cloudCoverage = getGreatestCloudCoverage([...weatherInfo.cloudLayers]);
     const cardinalDirection = getCardinalDirection(weatherInfo.wind.direction);
     const relativeHumidity = weatherInfo.relativeHumidity;
     const visibility = weatherInfo.visibility.distanceSm;

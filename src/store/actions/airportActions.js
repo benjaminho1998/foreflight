@@ -1,9 +1,13 @@
 import { GET_AIRPORTS, AIRPORTS_ERROR, GET_WEATHER, WEATHER_ERROR } from '../types';
 import axios from 'axios';
 
+
+//Action creator that performs axios calls and dispatches the returned data
 const getData = (code) => dispatch => {
+
     const airportUrl = "http://localhost:3000/airports/" + code + ".json";
     const weatherUrl = "http://localhost:3000/weather/" + code + ".json";
+
     axios.all([
         axios.get(airportUrl),
         axios.get(weatherUrl)

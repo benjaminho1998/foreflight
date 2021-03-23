@@ -4,6 +4,7 @@ const initialState = {
     weather: []
 };
 
+//Reducer for weather actions. All weather data is set to the weather array
 export default (state = initialState, action) =>  {
     switch(action.type) {
         case GET_WEATHER:
