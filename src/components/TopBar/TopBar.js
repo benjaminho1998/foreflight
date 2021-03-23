@@ -8,7 +8,7 @@ import './TopBar.sass';
 const TopBar = () => {
     return(
         <div className="top-bar">
-            <h1 className="header">Airports</h1>
+            <h1>Airports</h1>
             <div className="top-desc-container">
                 <IoMdAirplane /> 
                 Find airport and weather data

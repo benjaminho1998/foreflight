@@ -4,14 +4,15 @@ import { shallow } from 'enzyme';
 import "../../setupTests";
 import { IoMdAirplane } from 'react-icons/io';
 
-const wrapper = shallow(<TopBar />);
-
 describe("renders TopBar", () => {
+
+    const wrapper = shallow(<TopBar />);
+
     it("renders TopBar", () => {
         expect(wrapper).toMatchSnapshot();
     });
     it("renders TopBar header", () => {
-        const header = <h1 className="header">Airports</h1>;
+        const header = <h1>Airports</h1>;
         expect(wrapper.contains(header)).toEqual(true);
     });
     it("renders TopBar sub-header", () => {
@@ -19,7 +20,7 @@ describe("renders TopBar", () => {
         expect(wrapper.contains(subHeader)).toEqual(true);
     });
     it("renders airplane icon", () => {
-        const icon = <IoMdAirplane />
+        const icon = <IoMdAirplane />;
         expect(wrapper.contains(icon)).toEqual(true);
     });
 });

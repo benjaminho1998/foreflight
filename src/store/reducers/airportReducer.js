@@ -4,6 +4,7 @@ const initialState = {
     airports: []
 };
 
+//Reducer for airport actions. All airport data is set to the airports array
 export default (state = initialState, action) =>  {
     switch(action.type) {
         case GET_AIRPORTS:

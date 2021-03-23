@@ -7,20 +7,22 @@ import { Switch, Route } from 'react-router-dom';
 
 import "../../../node_modules/react-router-tabs/styles/react-router-tabs.css";
 
-const airports = ["kaus", "50r", "egll", "khou"];
+//If additional aiports need to be added, their codes and names just have to be placed in these arrays in corresponding order
+const airportCodes = ["kaus", "50r", "egll", "khou"];
+const airportNames = ["Austin-Bergstrom International (KAUS)", "Lockhart Municipal (50R)", "Heathrow (EGLL)", "William P Hobby (KHOU)"];
 
 //Body contains the tabs which in turn contains the AirportContainer
+//Passes the code to AirportWeatherContainer as a prop where the relevant data is then loaded in and used
 const Body = () => {
     return (
         <div>
-            <NavTab to="/kaus">Austin-Bergstrom International (KAUS)</NavTab>
-            <NavTab to="/50r">Lockhart Municipal (50R)</NavTab>
-            <NavTab to="/egll">Heathrow (EGLL)</NavTab>
-            <NavTab to="/khou">William P Hobby (KHOU)</NavTab>
+            {airportCodes.map((code, index) => 
+                <NavTab to={"/" + code} key={index}>{airportNames[index]}</NavTab>
+            )}
             <Switch>
-                {airports.map((airport, index) => 
-                    <Route key={index} path={"/"+ airport} render={() => 
-                        <AirportWeatherContainer name={airport} />}   
+                {airportCodes.map((code, index) => 
+                    <Route key={index} path={"/"+ code} render={() => 
+                        <AirportWeatherContainer name={code} />}   
                     />
                 )}
                 <Route path="/">

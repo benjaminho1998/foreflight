@@ -11,7 +11,7 @@ import Col from 'react-bootstrap/Col';
 
 import './AirportWeatherContainer.sass';
 
-//AirportWeatherContainer contains all of the info on each of the four airports
+//Takes in the airport code as a prop, fetches the appropriate data, and puts it into the store
 const AirportWeatherContainer = (props) => {
 
     const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const AirportWeatherContainer = (props) => {
 
     return (
         <div>
-            {airportName && weatherLoaded &&
+            {airportName && weatherLoaded && //Making sure the data is loaded
                 <Container className="airport-container">
                     <Row>
                         <div className="airport-name">
